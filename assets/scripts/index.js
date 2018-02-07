@@ -6,7 +6,7 @@ const gameEvents = require('./events')
 
 $(() => {
   setAPIOrigin(location, config)
-  $('#space-one').on('click', gameEvents.
+  $('#space-one').on('click', gameEvents.pushToArrayX(0)
 })
 
 const games = []
@@ -19,17 +19,7 @@ const User = function (name, id, wins, losses, winPercentage) {
   this.winPercentage = winPercentage
 }
 
-const gameBoard = [
-  'spaceOne',
-  'spaceTwo',
-  'spaceThree',
-  'spaceFour',
-  'spaceFive',
-  'spaceSix',
-  'spaceSeven',
-  'spaceEight',
-  'spaceNine'
-]
+const jonny = new User('jonny', '2', 888, 9, 'high percentage')
 
 // indicates the value (X or O) of the lastMove
 let lastMoveId = ''
@@ -51,18 +41,32 @@ let spaceOneXImage = function (
 
 // create a board
 
-let currentBoardStatus = ['', '', '', '', '', '', '', '', '']
+
 
 // on click event in cell num, currentBoardStatus[num] = 'X' or 'O'
 // on
 
-let pushToArrayX = function (num) {
-  currentBoardStatus[num] = 'X'
+const pushToArrayX = function (spaceNum) {
+  currentBoardStatus[spaceNum] = 'X'
+}
+let currentBoardStatus = ['', '', '', '', '', '', '', '', '']
+
+const x = 'X'
+const o = 'O'
+
+const playerPlay = function (i, player) {
+  if ((currentBoardStatus[i] === 'X') || (currentBoardStatus[i] === 'O')) {
+    return 'error'
+  } else {
+  currentBoardStatus[i] = player
+  console.log(currentBoardStatus)
+  }
 }
 
-let pushToArrayO = function (num) {
-  currentBoardStatus[num] = 'O'
+const pushToArrayO = function (spaceNum) {
+  currentBoardStatus[spaceNum] = 'O'
 }
+
 
 // or I can explicitly write out a function for every single possibility for 'X'
 
@@ -140,7 +144,6 @@ let spaceNineO = function () {
   currentBoardStatus[8] = 'X'
 }
 
-moveAssignment(4)
 
 // this doesn't work
 /*
