@@ -1,14 +1,5 @@
 'use strict'
 
-const setAPIOrigin = require('../../lib/set-api-origin')
-const config = require('./config')
-const gameEvents = require('./events')
-
-$(() => {
-  setAPIOrigin(location, config)
-  $('#space-one').on('click', gameEvents.
-})
-
 const games = []
 
 const User = function (name, id, wins, losses, winPercentage) {
@@ -42,14 +33,6 @@ const alternator = function () {
     currentMove = 'X'
   }
 }
-
-// make an event to display an 'X' in spaceOne
-
-let spaceOneXImage = function (
-  $('#spaceOne').val('img file')
-)
-
-// create a board
 
 let currentBoardStatus = ['', '', '', '', '', '', '', '', '']
 
@@ -163,7 +146,7 @@ const winChecker = function (array) {
     (array[6] === array[7] && array[7] === array[8]) ||
     (array[2] === array[4] && array[4] === array[6])) {
     console.log('game over')
-  } else if (array.length >= 9) {
+  } else if (array.length === 9) {
     console.log('tie')
   } else {
     console.log('next move')

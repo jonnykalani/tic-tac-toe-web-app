@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    production: 'https://ga-wdi-boston.herokuapp.com'
+    development: 'https://ga-wdi-boston.github.io/browser-template/?environment=development'
   }
 }
 
