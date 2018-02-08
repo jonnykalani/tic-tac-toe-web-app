@@ -7,7 +7,7 @@ const gameEvents = require('./events')
 $(() => {
   setAPIOrigin(location, config)
   $('#space-one').on('click', gameEvents.pushToArrayX(0)
-})
+)
 
 const games = []
 
