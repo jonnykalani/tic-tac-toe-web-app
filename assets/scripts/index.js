@@ -49,18 +49,51 @@ let spaceOneXImage = function (
 const pushToArrayX = function (spaceNum) {
   currentBoardStatus[spaceNum] = 'X'
 }
-let currentBoardStatus = ['', '', '', '', '', '', '', '', '']
+
+
+// to do: we could maybe have an empty board to .map from for every new game
+const emptyBoard = ['', '', '', '', '', '', '', '', '']
+
+let currentBoardStatus = []
 
 const x = 'X'
 const o = 'O'
 
-const playerPlay = function (i, player) {
+const winChecker = function (array) {
+  if ((array[0] === array[1] && array[1] === array[2] && array[0] !== '') ||
+    (array[0] === array[4] && array[4] === array[8] && array[0] !== '') ||
+    (array[0] === array[3] && array[3] === array[6] && array[0] !== '') ||
+    (array[1] === array[4] && array[4] === array[7] && array[1] !== '') ||
+    (array[2] === array[5] && array[5] === array[8] && array[2] !== '') ||
+    (array[3] === array[4] && array[4] === array[5] && array[3] !== '') ||
+    (array[6] === array[7] && array[7] === array[8] && array[6] !== '') ||
+    (array[2] === array[4] && array[4] === array[6] && array[2] !== '')) {
+    console.log('game over')
+  } else if (array.length >= 9) {
+    console.log('tie')
+  } else {
+    console.log('next move')
+  }
+}
+
+const playerMove = function (i, player) {
   if ((currentBoardStatus[i] === 'X') || (currentBoardStatus[i] === 'O')) {
     return 'error'
   } else {
   currentBoardStatus[i] = player
   console.log(currentBoardStatus)
   }
+  winChecker(currentBoardStatus)
+}
+
+// PlayerTurn function allows game to switch between playerOne ('X') and playerTwo ('O')
+const playerTurn = function () {
+  if (currentPlayer === playerOne) {
+    currentPlayer = playerTwo
+  } else {
+    currentPlayer = playerOne
+  }
+  console.log(currentPlayer) // when function is invoked, it swithches the players turn --> starts with playerOne = 'X'
 }
 
 const pushToArrayO = function (spaceNum) {
@@ -156,22 +189,7 @@ let winChecker = function (array) {
 }
 */
 
-const winChecker = function (array) {
-  if ((array[0] === array[1] && array[1] === array[2]) ||
-    (array[0] === array[4] && array[4] === array[8]) ||
-    (array[0] === array[3] && array[3] === array[6]) ||
-    (array[1] === array[4] && array[4] === array[7]) ||
-    (array[2] === array[5] && array[5] === array[8]) ||
-    (array[3] === array[4] && array[4] === array[5]) ||
-    (array[6] === array[7] && array[7] === array[8]) ||
-    (array[2] === array[4] && array[4] === array[6])) {
-    console.log('game over')
-  } else if (array.length >= 9) {
-    console.log('tie')
-  } else {
-    console.log('next move')
-  }
-}
+
 
 
 // use require with a reference to bundle the file and use it in this file
