@@ -3,11 +3,16 @@
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const gameEvents = require('./events')
+const api = require('./api')
 
 $(() => {
   setAPIOrigin(location, config)
-  $('#space-one').on('click', gameEvents.pushToArrayX(0))
 })
+
+$(() => {
+  gameEvents.addHandlers()
+})
+
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
