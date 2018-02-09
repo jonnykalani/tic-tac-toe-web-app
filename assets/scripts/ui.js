@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('./store')
+const gameLogic = require('./game-logic')
 
 const onSignUpSuccess = function () {
   console.log('signed up')
@@ -44,6 +45,14 @@ const signOutSuccess = function (data) {
 const signOutFailure = function (data) {
   $('#sign-out-message').text('error on sign out')
   $('#sign-out-message').css('font-size', '48px')
+}
+
+const cellZeroClickX = function () {
+  $('#cell-zero').text(playerX)
+}
+
+const cellZeroClickO = function () {
+  $('#cell-zero').text(playerO)
 }
 
 module.exports = {

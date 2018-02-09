@@ -83,30 +83,8 @@ const playerMove = function (i, player) {
   winChecker(currentBoard)
 }
 
-// PlayerTurn function allows game to switch between playerOne ('X') and playerTwo ('O')
-
-
-// or I can explicitly write out a function for every single possibility for 'X'
-
-
-
-// this doesn't work
-/*
-let winChecker = function (array) {
-  for (let i = 0; i < winningCombos.length; i++) {
-    if (winningCombos[i] === array) {
-      return 'game over'
-    }
-  }
-}
-*/
-
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
-
-// use require without a reference to ensure a file is bundled
-// require('./example')
-
 module.exports = {
-
+  playerX,
+  playerO,
+  currentPlayer
 }
