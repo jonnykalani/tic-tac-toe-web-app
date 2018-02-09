@@ -1,2 +1,51 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$pink: #ff1493;
+
+body {
+  background-color: #00fa9a;
+}
+
+h1 {
+  color: $pink;
+  font-weight: bold;
+  text-align: center;
+  font-size: 48px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+  }
+
+td {
+  background: #ffff00;
+  border: 12px solid $pink;
+  border-radius: 20px;
+  color: #00bfff;
+  font-size: 90px;
+  font-weight: bold;
+  height: 160px;
+  padding: 20px;
+  text-align: center;
+  width: 160px;
+}
+
+td:first-of-type {
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+td:nth-of-type(2) {
+  border-top-color: transparent;
+}
+
+td:nth-of-type(3) {
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+
+tr:nth-of-type(3) td {
+  border-bottom-color: transparent;
+}
