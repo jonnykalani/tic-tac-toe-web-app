@@ -3,7 +3,7 @@
 const gameApi = require('./api.js')
 const gameUi = require('./ui.js')
 const getFormFields = require('../../lib/get-form-fields.js')
-
+//const store = require('./store')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -19,8 +19,7 @@ const onSignIn = function (event) {
   const data = getFormFields(this)
   gameApi.signIn(data)
     .then(gameUi.onSignInSuccess)
-    .catch(gameUi.onSignInError)
-  console.log('data is ', data)
+    .catch(gameUi.onSignInFailure)
 }
 
 const onChangePassword = function (event) {
@@ -31,19 +30,28 @@ const onChangePassword = function (event) {
     .catch(gameUi.changePasswordFailure)
 }
 
+const onSignOut = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  gameApi.signOut(data)
+    .then(gameUi.signOutSuccess)
+    .catch(gameUi.signOutFailure)
+}
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
+  $('#sign-out').on('submit', onSignOut)
 }
 
 module.exports = {
   onSignUp,
   addHandlers,
   onSignIn,
-  onChangePassword
+  onChangePassword,
+  onSignOut
 }
-
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')

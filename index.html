@@ -14,18 +14,13 @@
     <body class="container-fluid">
       <h1>Tic Tac Toe</h1>
 
-      <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-in">
-  Launch demo modal
-</button>
-
+<p id="signIn-message"></p>
 <form id="sign-in">
   <fieldset>
     <legend>Sign Innnnn Biatch!!!!!</legend>
       <input type="text" name="credentials[email]" placeholder="your email">
       <input type="password" name="credentials[password]" placeholder="password">
       <input class="buttons" type="submit" value="Sign in!">
-      <p id="#signIn-message">Sign in successful</p>
   </fieldset>
 </form>
 <form id="sign-up">
@@ -38,15 +33,41 @@
   </fieldset>
 </form>
 
-<form id="change-password">
-  <fieldset>
-    <legend>change password</legend>
-      <input type="text" name="credentials[email]" placeholder="your email">
-      <input type="password" name="credentials[password]" placeholder="old password">
-      <input type="password" name="credentials[password]" placeholder="new password">
-      <input class="buttons" type="submit" value="Change Password">
-  </fieldset>
-</form>
+      <form id="change-password">
+        <fieldset>
+          <legend>change password</legend>
+            <input type="password" name="passwords[old]" placeholder="old password">
+            <input type="password" name="passwords[new]" placeholder="new password">
+            <input class="buttons" type="submit" value="Change Password">
+        </fieldset>
+        <p id="change-message">change message</p>
+      </form>
+      <form id="sign-out" class="border">
+        <fieldset>
+          <legend>Sign Out</legend>
+          <input class="buttons" type="submit" value="Sign Out">
+          <p id="sign-out-message"> sign out status</p>
+        </fieldset>
+      </form>
+
+    <h1>TIC TAC TOE</h1>
+      <table>
+        <tr>
+          <td id="#cell-zero">0</th>
+          <td id="#cell-one">1</th>
+          <td id="#cell-two">2</th>
+        </tr>
+        <tr>
+          <td id="#cell-three">3</td>
+          <td id="#cell-four">4</td>
+          <td id="#cell-five">5</td>
+        </tr>
+        <tr>
+          <td id="#cell-six">6</td>
+          <td id="#cell-seven">7</td>
+          <td id="#cell-eight">8</td>
+        </tr>
+      </table>
 
       <p>A game app created with &hearts; by Jonny Hicks</p>
     </body>
