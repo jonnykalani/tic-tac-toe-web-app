@@ -1,7 +1,6 @@
 'use strict'
 
 const store = require('./store')
-const gameLogic = require('./game-logic')
 
 const onSignUpSuccess = function () {
   console.log('signed up')
@@ -12,17 +11,17 @@ const onError = function () {
 }
 
 const onSignInSuccess = function (data) {
-  $('#signIn-message').text('Signed In Successfully')
-  $('#signIn-message').css('background-color', 'green')
-     console.log(data)
-     store.user = data.user
-     console.log('Signed in')
+  $('#sign-in-message').text('Signed In Successfully')
+  $('#sign-in-message').css('background-color', 'green')
+  console.log(data)
+  store.user = data.user
+  console.log('Signed in')
 }
 
 const onSignInFailure = function (error) {
   console.log(error)
-  $('#log-in-message').text('Error on logging in')
-  $('#log-in-message').css('font-size', '48px')
+  $('#sign-in-message').text('Error on logging in')
+  $('#sign-in-message').css('font-size', '48px')
 }
 
 const changePasswordSuccess = function (data) {
@@ -33,7 +32,7 @@ const changePasswordSuccess = function (data) {
 
 const changePasswordFailure = function (error) {
   $('#change-message').text('Error on change password')
-  $('#change-password').css('font-size', '48px')
+  $('#change-message').css('font-size', '48px')
   console.log(error)
 }
 
@@ -48,11 +47,11 @@ const signOutFailure = function (data) {
 }
 
 const cellZeroClickX = function () {
-  $('#cell-zero').text(playerX)
+  $('#cell-zero').text('X')
 }
 
 const cellZeroClickO = function () {
-  $('#cell-zero').text(playerO)
+  $('#cell-zero').text('O')
 }
 
 module.exports = {
@@ -63,5 +62,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  cellZeroClickO,
+  cellZeroClickX
 }

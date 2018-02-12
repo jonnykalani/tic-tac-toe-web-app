@@ -3,7 +3,7 @@
 const gameApi = require('./api.js')
 const gameUi = require('./ui.js')
 const getFormFields = require('../../lib/get-form-fields.js')
-//const store = require('./store')
+const gameLogic = require('./game-logic')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -40,19 +40,29 @@ const onSignOut = function (event) {
 
 const onClickZero = function (event) {
   event.preventDefault()
-  if ((currentPlayer = '') || (currentPlayer = O)) {
-  gameUi.cellZeroClickX
-} else {
-  gameUi.cellZeroClickO
-}
+  if (gameLogic.currentPlayer === gameLogic.playerX) {
+    gameUi.cellZeroClickO()
+  } else {
+    gameUi.cellZeroClickX()
+  }
+  gameLogic.playerMove(0, gameLogic.currentPlayer)
 }
 
+/*
+$(() => {
+  setAPIOrigin(location, config)
+  $('#cell-zero').on('click', playerMove(0, currentPlayer))
+})
+*/
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('#cell-zero').on('click', onClickZero)
+  $('#cell-zero').on('click', function () {
+    $('#top-left').text(gameLogic.currentPlayer)
+    gameLogic.playerMove(0, gameLogic.currentPlayer)
+  })
 }
 
 module.exports = {
@@ -63,10 +73,3 @@ module.exports = {
   onSignOut,
   onClickZero
 }
-
->>>>>>> api
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
-
-// use require without a reference to ensure a file is bundled
-// require('./example')

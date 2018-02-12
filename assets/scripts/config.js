@@ -6,8 +6,6 @@ const config = {
     development: 'http://tic-tac-toe.wdibos.com'
   }
 }
-
-
 /*
 const config = {
   apiOrigins: {

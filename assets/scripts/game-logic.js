@@ -1,12 +1,6 @@
 'use strict'
 
-$(() => {
-  setAPIOrigin(location, config)
-  $('#space-one').on('click', gameEvents.pushToArrayX(0)
-)
-
-const games = []
-
+/* this is a potential constructor function to store user data
 const User = function (name, id, wins, losses, winPercentage) {
   this.name = name,
   this.id = id,
@@ -14,21 +8,18 @@ const User = function (name, id, wins, losses, winPercentage) {
   this.losses = losses,
   this.winPercentage = winPercentage
 }
-
+// this would be how to make a new user
 const jonny = new User('jonny', '2', 888, 9, 'high percentage')
-
-// make an event to display an 'X' in spaceOne
+*/
 
 // create a board
-
-let currentBoard = []
-
+const currentBoard = []
 // on click event in cell num, currentBoardStatus[num] = 'X' or 'O'
 // on
 
 const playerX = 'X'
 const playerO = 'O'
-let currentPlayer = ''
+let currentPlayer = playerX
 
 // win checker checks to see if the board matches any of the win possibilities.
 // the first else if makes sure none of the spaces are null. If no spaces are
@@ -86,5 +77,6 @@ const playerMove = function (i, player) {
 module.exports = {
   playerX,
   playerO,
-  currentPlayer
+  currentPlayer,
+  playerMove
 }
