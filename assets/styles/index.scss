@@ -19,6 +19,49 @@ table {
   margin: auto;
   }
 
+.box {
+  background: #ffff00;
+  border: 4px solid $pink;
+  border-radius: 20px;
+  color: #00bfff;
+  font-size: 90px;
+  font-weight: bold;
+  height: 160px;
+  text-align: center;
+  width: 160px;
+}
+
+.buttons {
+  background-color: #ffff00;
+}
+
+.btn-primary {
+  margin: 20px;
+  padding: 20px;
+  background-color: #00bfff;
+}
+
+.change-password {
+  padding: 20px;
+}
+
+.row {
+  margin: auto;
+}
+
+.modal-dialog {
+  width: 650px;
+}
+
+.modal-content {
+  background-color: #00bfff;
+  color: #8b008b;
+}
+
+.sign-out {
+  padding: 20px;
+}
+
 td {
   background: #ffff00;
   border: 12px solid $pink;

@@ -3,7 +3,7 @@
 const gameApi = require('./api.js')
 const gameUi = require('./ui.js')
 const getFormFields = require('../../lib/get-form-fields.js')
-const gameLogic = require('./game-logic')
+const gameLogic = require('./game-logic.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -40,29 +40,72 @@ const onSignOut = function (event) {
 
 const onClickZero = function (event) {
   event.preventDefault()
-  if (gameLogic.currentPlayer === gameLogic.playerX) {
-    gameUi.cellZeroClickO()
-  } else {
-    gameUi.cellZeroClickX()
-  }
-  gameLogic.playerMove(0, gameLogic.currentPlayer)
+  gameLogic.playerMove(0)
+  gameUi.cellZeroClickX()
 }
 
-/*
-$(() => {
-  setAPIOrigin(location, config)
-  $('#cell-zero').on('click', playerMove(0, currentPlayer))
-})
-*/
+const onClickOne = function (event) {
+  event.preventDefault()
+  gameLogic.playerMove(1)
+  gameUi.cellOneClickX()
+}
+
+const onClickTwo = function (event) {
+  event.preventDefault()
+  gameLogic.playerMove(2)
+  gameUi.cellTwoClickX()
+}
+
+const onClickThree = function (event) {
+  event.preventDefault()
+  gameLogic.playerMove(3)
+  gameUi.cellThreeClickX()
+}
+
+const onClickFour = function (event) {
+  event.preventDefault()
+  gameLogic.playerMove(4)
+  gameUi.cellFourClickX()
+}
+
+const onClickFive = function (event) {
+  event.preventDefault()
+  gameLogic.playerMove(5)
+  gameUi.cellFiveClickX()
+}
+
+const onClickSix = function (event) {
+  event.preventDefault()
+  gameLogic.playerMove(6)
+  gameUi.cellSixClickX()
+}
+
+const onClickSeven = function (event) {
+  event.preventDefault()
+  gameLogic.playerMove(7)
+  gameUi.cellSevenClickX()
+}
+
+const onClickEight = function (event) {
+  event.preventDefault()
+  gameLogic.playerMove(8)
+  gameUi.cellEightClickX()
+}
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('#cell-zero').on('click', function () {
-    $('#top-left').text(gameLogic.currentPlayer)
-    gameLogic.playerMove(0, gameLogic.currentPlayer)
-  })
+  $('.cell-zero').on('click', onClickZero)
+  $('.cell-one').on('click', onClickOne)
+  $('.cell-two').on('click', onClickTwo)
+  $('.cell-three').on('click', onClickThree)
+  $('.cell-four').on('click', onClickFour)
+  $('.cell-five').on('click', onClickFive)
+  $('.cell-six').on('click', onClickSix)
+  $('.cell-seven').on('click', onClickSeven)
+  $('.cell-eight').on('click', onClickEight)
 }
 
 module.exports = {
@@ -71,5 +114,13 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  onClickZero
+  onClickZero,
+  onClickOne,
+  onClickTwo,
+  onClickThree,
+  onClickFour,
+  onClickFive,
+  onClickSix,
+  onClickSeven,
+  onClickEight
 }

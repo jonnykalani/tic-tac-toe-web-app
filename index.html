@@ -13,60 +13,111 @@
     </head>
     <body class="container-fluid">
 
-<p id="sign-in-message"></p>
-<form id="sign-in">
-  <fieldset>
-    <legend>Sign Innnnn Biatch!!!!!</legend>
-      <input type="text" name="credentials[email]" placeholder="your email">
-      <input type="password" name="credentials[password]" placeholder="password">
-      <input class="buttons" type="submit" value="Sign in!">
-  </fieldset>
-</form>
-<form id="sign-up">
-  <fieldset>
-    <legend>Create a new friggin account</legend>
-      <input type="text" name="credentials[email]" placeholder="your email">
-      <input type="password" name="credentials[password]" placeholder="password">
-      <input type="password" name="credentials[password]" placeholder="confirm password">
-      <input class="buttons" type="submit" value="Create Account!">
-  </fieldset>
-</form>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Sign In!
+      </button>
 
-      <form id="change-password">
-        <fieldset>
-          <legend>change password</legend>
-            <input type="password" name="passwords[old]" placeholder="old password">
-            <input type="password" name="passwords[new]" placeholder="new password">
-            <input class="buttons" type="submit" value="Change Password">
-        </fieldset>
-        <p id="change-message">change message</p>
-      </form>
-      <form id="sign-out" class="border">
-        <fieldset>
-          <legend>Sign Out</legend>
-          <input class="buttons" type="submit" value="Sign Out">
-          <p id="sign-out-message"> sign out status</p>
-        </fieldset>
-      </form>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <p id="sign-in-message"></p>
+              <form id="sign-in">
+                <fieldset>
+                  <h3>Sign Innnnn Biatch!!!!!</h3>
+                    <input type="text" name="credentials[email]" placeholder="your email">
+                    <input type="password" name="credentials[password]" placeholder="password">
+                    <input class="buttons btn" data-dismiss="modal" type="submit" value="Sign in!">
+                </fieldset>
+              </form>
+              <form id="sign-up">
+                <fieldset>
+                  <h3>Create a new friggin account</h3>
+                    <input type="text" name="credentials[email]" placeholder="your email">
+                    <input type="password" name="credentials[password]" placeholder="password">
+                    <input type="password" name="credentials[password]" placeholder="confirm password">
+                    <input class="buttons btn" data-dismiss="modal" type="submit" value="Create Account!">
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="col-xs-4 box cell-zero"></div>
+      <div class="col-xs-4 box cell-one"></div>
+      <div class="col-xs-4 box cell-two"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 box cell-three"></div>
+      <div class="col-xs-4 box cell-four"></div>
+      <div class="col-xs-4 box cell-five"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 box cell-six"></div>
+      <div class="col-xs-4 box cell-seven"></div>
+      <div class="col-xs-4 box cell-eight"></div>
+    </div>
+
+  </div>
 
     <h1>TIC TAC TOE</h1>
       <table>
         <tr>
-          <td id="#cell-zero">0</th>
-          <td id="#cell-one">1</th>
-          <td id="#cell-two">2</th>
+          <td id="cell-zero">0</th>
+          <td id="cell-one">1</th>
+          <td id="cell-two">2</th>
         </tr>
         <tr>
-          <td id="#cell-three">3</td>
-          <td id="#cell-four">4</td>
-          <td id="#cell-five">5</td>
+          <td id="cell-three">3</td>
+          <td id="cell-four">4</td>
+          <td id="cell-five">5</td>
         </tr>
         <tr>
-          <td id="#cell-six">6</td>
-          <td id="#cell-seven">7</td>
-          <td id="#cell-eight">8</td>
+          <td id="cell-six">6</td>
+          <td id="cell-seven">7</td>
+          <td id="cell-eight">8</td>
         </tr>
       </table>
+
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Change Password
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <form class="change-password" id="change-password">
+                <fieldset>
+                  <legend>change password</legend>
+                    <input type="password" name="passwords[old]" placeholder="old password">
+                    <input type="password" name="passwords[new]" placeholder="new password">
+                    <input class="buttons" type="submit" value="Change Password">
+                </fieldset>
+                <p id="change-message">change message</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="sign-out" id="sign-out" class="border">
+        <fieldset>
+          <input class="buttons" type="submit" value="Sign Out">
+          <p id="sign-out-message"></p>
+        </fieldset>
+      </form>
 
       <p>A game app created with &hearts; by Jonny Hicks</p>
     </body>

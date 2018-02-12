@@ -50,26 +50,26 @@ const winChecker = function (array) {
     console.log('tie')
   }
 }
-
+// this function switches between X and O
+const changePlayer = function () {
+  if (currentPlayer === playerX) {
+    currentPlayer = playerO
+  } else {
+    currentPlayer = playerX
+  }
+  console.log('current player is ' + currentPlayer) // when function is invoked, it swithches the players turn --> starts with playerOne = 'X'
+}
 // this next function places an X or O in a specified space on the board
-const playerMove = function (i, player) {
+const playerMove = function (i) {
   const pushMove = function () {
     if ((currentBoard[i] === 'X') || (currentBoard[i] === 'O')) {
       console.log('sorry! this space is already occupied!')
     } else {
-      currentBoard[i] = player
+      currentBoard[i] = currentPlayer
       console.log(currentBoard)
     }
   }
   pushMove()
-  const changePlayer = function () {
-    if (player === playerO) {
-      currentPlayer = playerX
-    } else {
-      currentPlayer = playerO
-    }
-    console.log('current player is ' + currentPlayer) // when function is invoked, it swithches the players turn --> starts with playerOne = 'X'
-  }
   changePlayer()
   winChecker(currentBoard)
 }
@@ -78,5 +78,8 @@ module.exports = {
   playerX,
   playerO,
   currentPlayer,
-  playerMove
+  playerMove,
+  winChecker,
+  currentBoard,
+  changePlayer
 }
