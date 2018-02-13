@@ -24,6 +24,7 @@ let currentPlayer = playerX
 // win checker checks to see if the board matches any of the win possibilities.
 // the first else if makes sure none of the spaces are null. If no spaces are
 // null, then the board is full and the game is over.
+let isGameOver = false
 
 const winChecker = function (array) {
   if ((array[0] === array[1] && array[1] === array[2] && array[0] !== undefined) ||
@@ -36,6 +37,7 @@ const winChecker = function (array) {
     (array[2] === array[4] && array[4] === array[6] && array[2] !== undefined)) {
     console.log('game over')
     console.log(currentPlayer + ' wins!')
+    isGameOver = true
   } else if (array[0] == null ||
             array[1] == null ||
             array[2] == null ||
@@ -52,6 +54,9 @@ const winChecker = function (array) {
 }
 // this function switches between X and O
 const changePlayer = function () {
+  if (isGameOver === true) {
+    return
+  }
   if (currentPlayer === playerX) {
     currentPlayer = playerO
   } else {
@@ -59,19 +64,20 @@ const changePlayer = function () {
   }
   console.log('current player is ' + currentPlayer) // when function is invoked, it swithches the players turn --> starts with playerOne = 'X'
 }
+
+const pushMove = function (i) {
+  if ((currentBoard[i] === 'X') || (currentBoard[i] === 'O')) {
+    console.log('sorry! this space is already occupied!')
+  } else {
+    currentBoard[i] = currentPlayer
+    console.log(currentBoard)
+  }
+}
 // this next function places an X or O in a specified space on the board
 const playerMove = function (i) {
-  const pushMove = function () {
-    if ((currentBoard[i] === 'X') || (currentBoard[i] === 'O')) {
-      console.log('sorry! this space is already occupied!')
-    } else {
-      currentBoard[i] = currentPlayer
-      console.log(currentBoard)
-    }
-  }
-  pushMove()
-  changePlayer()
+  pushMove(i)
   winChecker(currentBoard)
+  changePlayer()
 }
 
 module.exports = {

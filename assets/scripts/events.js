@@ -38,58 +38,13 @@ const onSignOut = function (event) {
     .catch(gameUi.signOutFailure)
 }
 
-const onClickZero = function (event) {
+const onClickCell = function (event) {
+  console.warn(event)
+  const cellIndex = event.data.cellIndex
+  const cellClass = event.data.cellClass
   event.preventDefault()
-  gameLogic.playerMove(0)
-  gameUi.cellZeroClickX()
-}
-
-const onClickOne = function (event) {
-  event.preventDefault()
-  gameLogic.playerMove(1)
-  gameUi.cellOneClickX()
-}
-
-const onClickTwo = function (event) {
-  event.preventDefault()
-  gameLogic.playerMove(2)
-  gameUi.cellTwoClickX()
-}
-
-const onClickThree = function (event) {
-  event.preventDefault()
-  gameLogic.playerMove(3)
-  gameUi.cellThreeClickX()
-}
-
-const onClickFour = function (event) {
-  event.preventDefault()
-  gameLogic.playerMove(4)
-  gameUi.cellFourClickX()
-}
-
-const onClickFive = function (event) {
-  event.preventDefault()
-  gameLogic.playerMove(5)
-  gameUi.cellFiveClickX()
-}
-
-const onClickSix = function (event) {
-  event.preventDefault()
-  gameLogic.playerMove(6)
-  gameUi.cellSixClickX()
-}
-
-const onClickSeven = function (event) {
-  event.preventDefault()
-  gameLogic.playerMove(7)
-  gameUi.cellSevenClickX()
-}
-
-const onClickEight = function (event) {
-  event.preventDefault()
-  gameLogic.playerMove(8)
-  gameUi.cellEightClickX()
+  gameLogic.playerMove(cellIndex)
+  gameUi.cellClick(cellIndex, cellClass)
 }
 
 const addHandlers = () => {
@@ -97,15 +52,15 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('.cell-zero').on('click', onClickZero)
-  $('.cell-one').on('click', onClickOne)
-  $('.cell-two').on('click', onClickTwo)
-  $('.cell-three').on('click', onClickThree)
-  $('.cell-four').on('click', onClickFour)
-  $('.cell-five').on('click', onClickFive)
-  $('.cell-six').on('click', onClickSix)
-  $('.cell-seven').on('click', onClickSeven)
-  $('.cell-eight').on('click', onClickEight)
+  $('.cell-zero').on('click', {cellIndex: 0, cellClass: '.cell-zero'}, onClickCell)
+  $('.cell-one').on('click', {cellIndex: 1, cellClass: '.cell-one'}, onClickCell)
+  $('.cell-two').on('click', {cellIndex: 2, cellClass: '.cell-two'}, onClickCell)
+  $('.cell-three').on('click', {cellIndex: 3, cellClass: '.cell-three'}, onClickCell)
+  $('.cell-four').on('click', {cellIndex: 4, cellClass: '.cell-four'}, onClickCell)
+  $('.cell-five').on('click', {cellIndex: 5, cellClass: '.cell-five'}, onClickCell)
+  $('.cell-six').on('click', {cellIndex: 6, cellClass: '.cell-six'}, onClickCell)
+  $('.cell-seven').on('click', {cellIndex: 7, cellClass: '.cell-seven'}, onClickCell)
+  $('.cell-eight').on('click', {cellIndex: 8, cellClass: '.cell-eight'}, onClickCell)
 }
 
 module.exports = {
@@ -114,13 +69,5 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  onClickZero,
-  onClickOne,
-  onClickTwo,
-  onClickThree,
-  onClickFour,
-  onClickFive,
-  onClickSix,
-  onClickSeven,
-  onClickEight
+  onClickCell
 }

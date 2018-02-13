@@ -7,6 +7,11 @@ body {
   background-color: #00fa9a;
 }
 
+.game-board {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 h1 {
   color: $pink;
   font-size: 48px;
@@ -29,6 +34,7 @@ table {
   height: 160px;
   text-align: center;
   width: 160px;
+  margin: 20px auto auto auto;
 }
 
 .buttons {

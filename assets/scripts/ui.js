@@ -47,40 +47,8 @@ const signOutFailure = function (data) {
   $('#sign-out-message').css('font-size', '48px')
 }
 
-const cellZeroClickX = function () {
-  $('.cell-zero').text(gameLogic.currentBoard[0])
-}
-
-const cellOneClickX = function () {
-  $('.cell-one').text(gameLogic.currentBoard[1])
-}
-
-const cellTwoClickX = function () {
-  $('.cell-two').text(gameLogic.currentBoard[2])
-}
-
-const cellThreeClickX = function () {
-  $('.cell-three').text(gameLogic.currentBoard[3])
-}
-
-const cellFourClickX = function () {
-  $('.cell-four').text(gameLogic.currentBoard[4])
-}
-
-const cellFiveClickX = function () {
-  $('.cell-five').text(gameLogic.currentBoard[5])
-}
-
-const cellSixClickX = function () {
-  $('.cell-six').text(gameLogic.currentBoard[6])
-}
-
-const cellSevenClickX = function () {
-  $('.cell-seven').text(gameLogic.currentBoard[7])
-}
-
-const cellEightClickX = function () {
-  $('.cell-eight').text(gameLogic.currentBoard[8])
+const cellClick = function (cellIndex, cellClass) {
+  $(cellClass).text(gameLogic.currentBoard[cellIndex])
 }
 
 module.exports = {
@@ -92,13 +60,5 @@ module.exports = {
   changePasswordFailure,
   signOutSuccess,
   signOutFailure,
-  cellZeroClickX,
-  cellOneClickX,
-  cellTwoClickX,
-  cellThreeClickX,
-  cellFourClickX,
-  cellFiveClickX,
-  cellSixClickX,
-  cellSevenClickX,
-  cellEightClickX
+  cellClick
 }
