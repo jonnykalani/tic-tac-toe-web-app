@@ -6,8 +6,9 @@ const gameEvents = require('./events')
 
 $(() => {
   setAPIOrigin(location, config)
-})
-
-$(() => {
   gameEvents.addHandlers()
+  $('.game-board').hide()
+  $('.change-password-button').hide()
+  $('.sign-out').hide()
+  $('.new-game-button').hide()
 })

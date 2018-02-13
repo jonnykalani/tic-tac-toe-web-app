@@ -17,6 +17,7 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
+  console.log('onSignIn is running')
   gameApi.signIn(data)
     .then(gameUi.onSignInSuccess)
     .catch(gameUi.onSignInFailure)
@@ -38,13 +39,22 @@ const onSignOut = function (event) {
     .catch(gameUi.signOutFailure)
 }
 
+const onNewGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  gameApi.newGame(data)
+    .then(gameUi.newGameSuccess)
+    .catch(gameUi.newGameFailure)
+}
+
 const onClickCell = function (event) {
-  console.warn(event)
   const cellIndex = event.data.cellIndex
   const cellClass = event.data.cellClass
   event.preventDefault()
   gameLogic.playerMove(cellIndex)
   gameUi.cellClick(cellIndex, cellClass)
+  gameApi.updateGameCell(cellIndex, gameLogic.currentBoard[cellIndex], gameLogic.winChecker(gameLogic.currentBoard))
+  // gameApi.updateGameOver()
 }
 
 const addHandlers = () => {
@@ -52,6 +62,7 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
+  $('#new-game-button').on('submit', onNewGame)
   $('.cell-zero').on('click', {cellIndex: 0, cellClass: '.cell-zero'}, onClickCell)
   $('.cell-one').on('click', {cellIndex: 1, cellClass: '.cell-one'}, onClickCell)
   $('.cell-two').on('click', {cellIndex: 2, cellClass: '.cell-two'}, onClickCell)
@@ -69,5 +80,6 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
+  onNewGame,
   onClickCell
 }

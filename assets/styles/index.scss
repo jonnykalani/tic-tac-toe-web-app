@@ -3,26 +3,33 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 $pink: #ff1493;
 
+.begin-button {
+  margin: 0 auto;
+}
+
+.new-game-button {
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+}
+
 body {
   background-color: #00fa9a;
 }
 
 .game-board {
-  margin-left: auto;
-  margin-right: auto;
+  width: 50%;
+  margin: auto;
 }
 
 h1 {
   color: $pink;
   font-size: 48px;
   font-weight: bold;
-  text-align: center;
-}
-
-table {
-  border-collapse: collapse;
+  width: 80%;
   margin: auto;
-  }
+  padding: 20px;
+}
 
 .box {
   background: #ffff00;
@@ -34,7 +41,7 @@ table {
   height: 160px;
   text-align: center;
   width: 160px;
-  margin: 20px auto auto auto;
+  margin: 0 auto;
 }
 
 .buttons {
@@ -51,8 +58,15 @@ table {
   padding: 20px;
 }
 
-.row {
+.change-password-button {
   margin: auto;
+  padding: 20px;
+  display: block;
+  width: 20%;
+}
+
+.row {
+  margin: 0 auto;
 }
 
 .modal-dialog {
@@ -64,37 +78,23 @@ table {
   color: #8b008b;
 }
 
-.sign-out {
-  padding: 20px;
-}
-
-td {
-  background: #ffff00;
-  border: 12px solid $pink;
-  border-radius: 20px;
-  color: #00bfff;
-  font-size: 90px;
-  font-weight: bold;
-  height: 160px;
-  padding: 20px;
+.sign-out-button {
+  display: block;
   text-align: center;
-  width: 160px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-td:first-of-type {
-  border-left-color: transparent;
-  border-top-color: transparent;
+.change-button {
+  padding: 20px;
 }
 
-td:nth-of-type(2) {
-  border-top-color: transparent;
+.sign-out-form {
+  display: inline-block;
+  text-align: center;
 }
 
-td:nth-of-type(3) {
-  border-right-color: transparent;
-  border-top-color: transparent;
-}
-
-tr:nth-of-type(3) td {
-  border-bottom-color: transparent;
+.footer {
+  text-align: center;
 }
