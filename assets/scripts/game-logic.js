@@ -13,7 +13,7 @@ const jonny = new User('jonny', '2', 888, 9, 'high percentage')
 */
 
 // create a board
-let currentBoard = []
+const currentBoard = []
 // on click event in cell num, currentBoardStatus[num] = 'X' or 'O'
 // on
 
@@ -21,7 +21,7 @@ const playerX = 'X'
 const playerO = 'O'
 let currentPlayer = playerX
 let oppositePlayer
-let otherPlayer = function () {
+const otherPlayer = function () {
   if (currentPlayer === playerX) {
     oppositePlayer = playerO
   } else {
@@ -34,16 +34,15 @@ let otherPlayer = function () {
 // null, then the board is full and the game is over.
 
 const endGame = function () {
-  currentBoard = []
-  $('.cell-zero').empty()
-  $('.cell-one').empty()
-  $('.cell-two').empty()
-  $('.cell-three').empty()
-  $('.cell-four').empty()
-  $('.cell-five').empty()
-  $('.cell-six').empty()
-  $('.cell-seven').empty()
-  $('.cell-eight').empty()
+  $('.cell-zero').text('')
+  $('.cell-one').text('')
+  $('.cell-two').text('')
+  $('.cell-three').text('')
+  $('.cell-four').text('')
+  $('.cell-five').text('')
+  $('.cell-six').text('')
+  $('.cell-seven').text('')
+  $('.cell-eight').text('')
 }
 
 const winChecker = function (array) {
@@ -55,9 +54,8 @@ const winChecker = function (array) {
     (array[3] === array[4] && array[4] === array[5] && array[3] !== undefined) ||
     (array[6] === array[7] && array[7] === array[8] && array[6] !== undefined) ||
     (array[2] === array[4] && array[4] === array[6] && array[2] !== undefined)) {
-    console.log('game over')
     otherPlayer()
-    console.log(oppositePlayer + ' wins!')
+    array = new Array(9).fill('')
     $('#new-game-message').text(oppositePlayer + ' wins!')
     endGame()
     return true
@@ -70,10 +68,11 @@ const winChecker = function (array) {
             array[6] == null ||
             array[7] == null ||
             array[8] == null) {
-    console.log('next turn')
+    $('#new-game-message').text(currentPlayer + ', take your turn!')
     return false
   } else {
-    console.log('tie')
+    $('#new-game-message').text('tie')
+    array = []
     endGame()
     return true
   }
@@ -85,15 +84,15 @@ const changePlayer = function () {
   } else {
     currentPlayer = playerX
   }
-  console.log('current player is ' + currentPlayer) // when function is invoked, it swithches the players turn --> starts with playerOne = 'X'
 }
 
 const pushMove = function (i) {
   if ((currentBoard[i] === 'X') || (currentBoard[i] === 'O')) {
-    console.log('sorry! this space is already occupied!')
+    $('#new-game-message').text('sorry! this space is already occupied!')
+  } else if (winChecker(currentBoard) === true) {
+    $('#new-game-message').text('the game is over')
   } else {
     currentBoard[i] = currentPlayer
-    console.log(currentBoard)
   }
 }
 

@@ -14,7 +14,7 @@
     <body class="container-fluid">
 
       <!-- Button trigger modal -->
-      <button id="modal-button" type="button" class="btn col-xs-12 begin-button btn-primary" data-toggle="modal" data-target="#sign-in-box">
+      <button id="modal-button" type="button" class="btn col-xs-4 begin-button btn-primary" data-toggle="modal" data-target="#sign-in-box">
         Begin!
       </button>
 
@@ -37,7 +37,7 @@
               </form>
               <form id="sign-up">
                 <fieldset>
-                  <h3>Create a new friggin account</h3>
+                  <h3>Create a new frrriggin account</h3>
                     <input type="text" name="credentials[email]" placeholder="your email">
                     <input type="password" name="credentials[password]" placeholder="password">
                     <input type="password" name="credentials[password]" placeholder="confirm password">
@@ -48,15 +48,16 @@
           </div>
         </div>
       </div>
-  <div class="game-board">
-    <h1>TIC TAC TOE</h1>
+  <div>
+    <h1 class="tic-tac-toe">TIC TAC TOE</h1>
 
-    <form class="new-game-button" id="new-game-button">
-      <fieldset>
-        <input class="buttons" type="submit" value="New Game">
-        <p id="new-game-message"></p>
-      </fieldset>
-    </form>
+    <div id="new-game-button">
+      <button type="button" class="new-game-button btn btn-primary">
+        New Game
+      </button>
+    <p id="new-game-message"></p>
+  </div>
+  <div class="game-board">
     <div class="row">
       <div class="col-xs-4 box cell-zero"></div>
       <div class="col-xs-4 box cell-one"></div>
@@ -73,13 +74,14 @@
       <div class="col-xs-4 box cell-eight"></div>
     </div>
   </div>
+</div>
   <div class="get-games-box">
     <button type="button" class="btn get-games-button btn-primary">
       Get Games
     </button>
   <p class="get-games-message"></p>
   </div>
-      <button type="button" class="btn change-password-button btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      <button type="button" class="btn change-password-button btn-primary" data-toggle="modal" data-target="#change-password-modal">
         Change Password
       </button>
 
@@ -112,6 +114,5 @@
         </fieldset>
       </form>
     </div>
-      <p class="footer">A game app created with &hearts; by Jonny Hicks</p>
     </body>
 </html>

@@ -2,7 +2,6 @@
 
 const store = require('./store')
 const gameLogic = require('./game-logic.js')
-const gameApi = require('./api.js')
 
 const onSignUpSuccess = function () {
   console.log('signed up')
@@ -16,13 +15,13 @@ const onSignInSuccess = function (data) {
   $('#sign-in-message').text('Signed In Successfully')
   $('#sign-in-message').css('background-color', 'green')
   $('#sign-in').hide()
-  $('.game-board').show()
   $('.change-password-button').show()
   $('#sign-out').show()
   $('.new-game-button').show()
   $('#sign-in-box').modal('hide')
   $('#modal-button').hide()
   $('.get-games-button').show()
+  $('.tic-tac-toe').show()
   console.log(data)
   store.user = data.user
   console.log('Signed in')
@@ -37,7 +36,7 @@ const onSignInFailure = function (error) {
 const changePasswordSuccess = function (data) {
   $('#change-message').text('change success!')
   $('#change-message').css('font-size', '48px').css('font-weight', 'bold').css('text-align', 'center')
-  $('#change-password').hide()
+  $('#change-password-modal').modal('hide')
   console.log('change success!')
 }
 
@@ -59,9 +58,9 @@ const signOutFailure = function (data) {
 
 const newGameSuccess = function (data) {
   $('#new-game-message').text('Successfully created a new game!')
-  $('#new-game-message').css('font-size', '48px')
+  $('#new-game-message').css('font-size', '18px')
+  $('.game-board').show()
   store.game = data.game
-  console.log('new game started', store.game, store.user)
 }
 
 const newGameFailure = function (data) {

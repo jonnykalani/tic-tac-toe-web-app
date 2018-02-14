@@ -71,7 +71,7 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('submit', onSignOut)
-  $('#new-game-button').on('submit', onNewGame)
+  $('#new-game-button').on('click', onNewGame)
   $('.cell-zero').on('click', {cellIndex: 0, cellClass: '.cell-zero'}, onClickCell)
   $('.cell-one').on('click', {cellIndex: 1, cellClass: '.cell-one'}, onClickCell)
   $('.cell-two').on('click', {cellIndex: 2, cellClass: '.cell-two'}, onClickCell)

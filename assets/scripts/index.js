@@ -8,6 +8,7 @@ $(() => {
   setAPIOrigin(location, config)
   gameEvents.addHandlers()
   $('.game-board').hide()
+  $('.tic-tac-toe').hide()
   $('.change-password-button').hide()
   $('.sign-out').hide()
   $('.new-game-button').hide()
