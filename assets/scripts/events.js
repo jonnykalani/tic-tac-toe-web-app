@@ -48,13 +48,22 @@ const onNewGame = function (event) {
 }
 
 const onClickCell = function (event) {
+  event.preventDefault()
   const cellIndex = event.data.cellIndex
   const cellClass = event.data.cellClass
-  event.preventDefault()
+  // const data = getFormFields(event.target)
+  console.log('this is the cellIndex', cellIndex)
   gameLogic.playerMove(cellIndex)
-  gameUi.cellClick(cellIndex, cellClass)
   gameApi.updateGameCell(cellIndex, gameLogic.currentBoard[cellIndex], gameLogic.winChecker(gameLogic.currentBoard))
+  gameUi.cellClickSuccess(event.data, cellIndex, cellClass)
   // gameApi.updateGameOver()
+}
+
+const onGetGames = function (event) {
+  event.preventDefault()
+  // const data = getFormFields(event.target)
+  gameApi.getGames()
+    .then(gameUi.getGamesSuccess)
 }
 
 const addHandlers = () => {
@@ -72,6 +81,7 @@ const addHandlers = () => {
   $('.cell-six').on('click', {cellIndex: 6, cellClass: '.cell-six'}, onClickCell)
   $('.cell-seven').on('click', {cellIndex: 7, cellClass: '.cell-seven'}, onClickCell)
   $('.cell-eight').on('click', {cellIndex: 8, cellClass: '.cell-eight'}, onClickCell)
+  $('.get-games-button').on('click', onGetGames)
 }
 
 module.exports = {
@@ -81,5 +91,6 @@ module.exports = {
   onChangePassword,
   onSignOut,
   onNewGame,
-  onClickCell
+  onClickCell,
+  onGetGames
 }

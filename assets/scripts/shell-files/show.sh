@@ -1,17 +1,6 @@
-curl --include --request POST "https://aqueous-atoll-85096.herokuapp.com/games/" \
+curl --include --request GET "https://aqueous-atoll-85096.herokuapp.com/games?over=true" \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
-  --data '{
-    "game": {
-      "id": "'"${3}"'",
-      "cells": "'"${ARRAY}"'",
-      "over": "'"${FALSE}"'",
-      "player_x": {
-        "id": "'"${1}"'",
-        "email": "'"${EMAIL}"'"
-      },
-      "player_o": "'"${NULL}"'"
-    }
-  }'
+
 
 echo

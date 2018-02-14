@@ -11,4 +11,5 @@ $(() => {
   $('.change-password-button').hide()
   $('.sign-out').hide()
   $('.new-game-button').hide()
+  $('.get-games-button').hide()
 })

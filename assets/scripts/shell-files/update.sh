@@ -4,7 +4,7 @@ curl --include --request PATCH "https://aqueous-atoll-85096.herokuapp.com/games/
   --data '{
           "game": {
             "cell": {
-              "index": 0,
+              "index": 2,
               "value": "x"
             },
             "over": false

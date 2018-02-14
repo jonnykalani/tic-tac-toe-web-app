@@ -2,6 +2,7 @@
 
 const store = require('./store')
 const gameLogic = require('./game-logic.js')
+const gameApi = require('./api.js')
 
 const onSignUpSuccess = function () {
   console.log('signed up')
@@ -21,6 +22,7 @@ const onSignInSuccess = function (data) {
   $('.new-game-button').show()
   $('#sign-in-box').modal('hide')
   $('#modal-button').hide()
+  $('.get-games-button').show()
   console.log(data)
   store.user = data.user
   console.log('Signed in')
@@ -35,6 +37,7 @@ const onSignInFailure = function (error) {
 const changePasswordSuccess = function (data) {
   $('#change-message').text('change success!')
   $('#change-message').css('font-size', '48px').css('font-weight', 'bold').css('text-align', 'center')
+  $('#change-password').hide()
   console.log('change success!')
 }
 
@@ -58,8 +61,7 @@ const newGameSuccess = function (data) {
   $('#new-game-message').text('Successfully created a new game!')
   $('#new-game-message').css('font-size', '48px')
   store.game = data.game
-  console.log(data)
-  console.log(store.game)
+  console.log('new game started', store.game, store.user)
 }
 
 const newGameFailure = function (data) {
@@ -67,8 +69,15 @@ const newGameFailure = function (data) {
   $('#new-game-message').css('font-size', '48px')
 }
 
-const cellClick = function (cellIndex, cellClass) {
-  $(cellClass).text(gameLogic.currentBoard[cellIndex])
+const cellClickSuccess = function (data, index, cellClass) {
+  // debugger
+  $(cellClass).text(gameLogic.currentBoard[index])
+  console.log(store.game, store.user)
+  // store.game = data.game
+}
+
+const getGamesSuccess = function (data) {
+  $('.get-games-message').text('games played ' + data.games.length)
 }
 
 module.exports = {
@@ -82,5 +91,6 @@ module.exports = {
   signOutFailure,
   newGameSuccess,
   newGameFailure,
-  cellClick
+  cellClickSuccess,
+  getGamesSuccess
 }

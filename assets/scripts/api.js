@@ -48,9 +48,9 @@ const signOut = function (data) {
   })
 }
 
-const newGame = function () {
+const newGame = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/games/',
+    url: config.apiOrigin + '/games',
     method: 'POST',
     headers: {
       contentType: 'application/json',
@@ -59,22 +59,23 @@ const newGame = function () {
   })
 }
 
-const updateGameCell = function (cellIndex, player, over) {
-  console.log(cellIndex, player, over, store.game.id, store.user.token)
+const updateGameCell = function (index, player, over) {
+  console.log('api update cell', index, player, over, store.game.id, store.user)
+  // debugger
   return $.ajax({
-    url: config.apiOrigins.production + '/games/' + store.game.id,
+    url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',
       Authorization: 'Token token=' + store.user.token
     },
     data: {
-      game: {
-        cell: {
-          index: cellIndex,
-          value: player
+      'game': {
+        'cell': {
+          'index': index,
+          'value': player
         },
-        over: over
+        'over': over
       }
     }
   })
@@ -96,6 +97,17 @@ const updateGameOver = function () {
   })
 }
 
+const getGames = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games',
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -103,5 +115,6 @@ module.exports = {
   signOut,
   newGame,
   updateGameCell,
-  updateGameOver
+  updateGameOver,
+  getGames
 }
