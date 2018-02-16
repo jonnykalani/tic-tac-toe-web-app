@@ -1,21 +1,8 @@
 'use strict'
 
-/* this is a potential constructor function to store user data
-const User = function (name, id, wins, losses, winPercentage) {
-  this.name = name,
-  this.id = id,
-  this.wins = wins,
-  this.losses = losses,
-  this.winPercentage = winPercentage
-}
-// this would be how to make a new user
-const jonny = new User('jonny', '2', 888, 9, 'high percentage')
-*/
+const gameApi = require('./api.js')
 
-// create a board
-const currentBoard = []
-// on click event in cell num, currentBoardStatus[num] = 'X' or 'O'
-// on
+let currentBoard = []
 
 const playerX = 'X'
 const playerO = 'O'
@@ -28,10 +15,6 @@ const otherPlayer = function () {
     oppositePlayer = playerX
   }
 }
-
-// win checker checks to see if the board matches any of the win possibilities.
-// the first else if makes sure none of the spaces are null. If no spaces are
-// null, then the board is full and the game is over.
 
 const endGame = function () {
   $('.cell-zero').text('')
@@ -55,9 +38,9 @@ const winChecker = function (array) {
     (array[6] === array[7] && array[7] === array[8] && array[6] !== undefined) ||
     (array[2] === array[4] && array[4] === array[6] && array[2] !== undefined)) {
     otherPlayer()
-    array = new Array(9).fill('')
+    gameApi.updateGameOver()
     $('#new-game-message').text(oppositePlayer + ' wins!')
-    endGame()
+    console.log('a win was detected')
     return true
   } else if (array[0] == null ||
             array[1] == null ||
@@ -72,8 +55,7 @@ const winChecker = function (array) {
     return false
   } else {
     $('#new-game-message').text('tie')
-    array = []
-    endGame()
+    gameApi.updateGameOver()
     return true
   }
 }

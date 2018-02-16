@@ -42,9 +42,12 @@ const onSignOut = function (event) {
 const onNewGame = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
+  gameLogic.currentBoard = ['', '', '', '', '', '', '', '', '']
+  gameLogic.endGame()
   gameApi.newGame(data)
     .then(gameUi.newGameSuccess)
     .catch(gameUi.newGameFailure)
+  console.log('this is the new array ', gameLogic.currentBoard)
 }
 
 const onClickCell = function (event) {
@@ -52,11 +55,10 @@ const onClickCell = function (event) {
   const cellIndex = event.data.cellIndex
   const cellClass = event.data.cellClass
   // const data = getFormFields(event.target)
-  console.log('this is the cellIndex', cellIndex)
+  console.log('this is the new array', gameLogic.currentBoard)
   gameLogic.playerMove(cellIndex)
   gameApi.updateGameCell(cellIndex, gameLogic.currentBoard[cellIndex], gameLogic.winChecker(gameLogic.currentBoard))
   gameUi.cellClickSuccess(event.data, cellIndex, cellClass)
-  // gameApi.updateGameOver()
 }
 
 const onGetGames = function (event) {
