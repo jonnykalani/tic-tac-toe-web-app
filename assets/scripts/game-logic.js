@@ -26,39 +26,9 @@ const endGame = function () {
   $('.cell-six').text('')
   $('.cell-seven').text('')
   $('.cell-eight').text('')
+  console.log('endGame is being called from somewhere')
 }
 
-const winChecker = function (array) {
-  if ((array[0] === array[1] && array[1] === array[2] && array[0] !== undefined) ||
-    (array[0] === array[4] && array[4] === array[8] && array[0] !== undefined) ||
-    (array[0] === array[3] && array[3] === array[6] && array[0] !== undefined) ||
-    (array[1] === array[4] && array[4] === array[7] && array[1] !== undefined) ||
-    (array[2] === array[5] && array[5] === array[8] && array[2] !== undefined) ||
-    (array[3] === array[4] && array[4] === array[5] && array[3] !== undefined) ||
-    (array[6] === array[7] && array[7] === array[8] && array[6] !== undefined) ||
-    (array[2] === array[4] && array[4] === array[6] && array[2] !== undefined)) {
-    otherPlayer()
-    gameApi.updateGameOver()
-    $('#new-game-message').text(oppositePlayer + ' wins!')
-    console.log('a win was detected')
-    return true
-  } else if (array[0] == null ||
-            array[1] == null ||
-            array[2] == null ||
-            array[3] == null ||
-            array[4] == null ||
-            array[5] == null ||
-            array[6] == null ||
-            array[7] == null ||
-            array[8] == null) {
-    $('#new-game-message').text(currentPlayer + ', take your turn!')
-    return false
-  } else {
-    $('#new-game-message').text('tie')
-    gameApi.updateGameOver()
-    return true
-  }
-}
 // this function switches between X and O
 const changePlayer = function () {
   if (currentPlayer === playerX) {
@@ -68,30 +38,95 @@ const changePlayer = function () {
   }
 }
 
-const pushMove = function (i) {
-  if ((currentBoard[i] === 'X') || (currentBoard[i] === 'O')) {
-    $('#new-game-message').text('sorry! this space is already occupied!')
-  } else if (winChecker(currentBoard) === true) {
-    $('#new-game-message').text('the game is over')
+let over
+
+const winChecker = function (array, i) {
+  if (over !== true && ((array[0] === array[1] && array[1] === array[2] && array[0] !== undefined) ||
+    (array[0] === array[4] && array[4] === array[8] && array[0] !== undefined) ||
+    (array[0] === array[3] && array[3] === array[6] && array[0] !== undefined) ||
+    (array[1] === array[4] && array[4] === array[7] && array[1] !== undefined) ||
+    (array[2] === array[5] && array[5] === array[8] && array[2] !== undefined) ||
+    (array[3] === array[4] && array[4] === array[5] && array[3] !== undefined) ||
+    (array[6] === array[7] && array[7] === array[8] && array[6] !== undefined) ||
+    (array[2] === array[4] && array[4] === array[6] && array[2] !== undefined))) {
+    otherPlayer()
+    $('#new-game-message').text(oppositePlayer + ' wins!')
+    console.log('a win was detected and over = true')
+    $('.game-board').hide()
+    boardReset()
+    over = true
+    gameApi.updateGameOver(true)
+    console.log('winChecker thinks over is', over)
+  } else if (array[0] == null ||
+            array[1] == null ||
+            array[2] == null ||
+            array[3] == null ||
+            array[4] == null ||
+            array[5] == null ||
+            array[6] == null ||
+            array[7] == null ||
+            array[8] == null) {
+    console.log('move pushed to array: ', array)
+    $('#new-game-message').text(currentPlayer + ', take your turn!')
+    over = false
   } else {
-    currentBoard[i] = currentPlayer
+    $('#new-game-message').text('tie')
+    gameApi.updateGameOver()
+    over = true
   }
 }
 
+/* this is in reference to the events function in onClickCell
+updateCurrentBoard = function () {
+  currentBoard[i] = currentPlayer
+}
+*/
+
+const pushMove = function (i, board) {
+  if ((currentBoard[i] === 'X') || (currentBoard[i] === 'O')) {
+    $('#new-game-message').text('sorry! this space is already occupied!')
+    console.log('script thinks array[i] has X or O, board is', board)
+  } else if ((board[i] === 'X') || (board[i] === 'O')) {
+    $('#new-game-message').text('sorry! this space is already occupied!')
+  } else if (over === true) {
+    $('#new-game-message').text('the game is over')
+    board = []
+    console.log('pushMove thinks over is true')
+  } else {
+    board[i] = currentPlayer
+    $('#new-game-message').text(currentPlayer + ', take your turn!')
+    changePlayer()
+  }
+  console.log(board, ' end of pushMove function')
+}
+
 // this next function places an X or O in a specified space on the board
-const playerMove = function (i) {
-  pushMove(i)
-  winChecker(currentBoard)
-  changePlayer()
+const playerMove = function (i, board) {
+  pushMove(i, board)
+//  console.log('board after pushMove: ', board)
+  console.log('beginning of player move array', board)
+  // debugger
+  winChecker(board, i)
+}
+
+const boardReset = function (board) {
+  board = []
+  currentBoard = [board]
+  over = false
+  currentPlayer = playerX
+  console.log('boardReset is getting called, this is the board', board, currentBoard)
 }
 
 module.exports = {
+  boardReset,
   playerX,
   playerO,
   currentPlayer,
-  playerMove,
-  winChecker,
   currentBoard,
+  winChecker,
   changePlayer,
-  endGame
+  pushMove,
+  playerMove,
+  endGame,
+  over
 }

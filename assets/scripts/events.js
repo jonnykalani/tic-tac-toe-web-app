@@ -4,6 +4,7 @@ const gameApi = require('./api.js')
 const gameUi = require('./ui.js')
 const getFormFields = require('../../lib/get-form-fields.js')
 const gameLogic = require('./game-logic.js')
+const gameIndex = require('./index.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -42,12 +43,15 @@ const onSignOut = function (event) {
 const onNewGame = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  gameLogic.currentBoard = ['', '', '', '', '', '', '', '', '']
   gameLogic.endGame()
   gameApi.newGame(data)
     .then(gameUi.newGameSuccess)
     .catch(gameUi.newGameFailure)
-  console.log('this is the new array ', gameLogic.currentBoard)
+  gameLogic.boardReset(gameLogic.currentBoard)
+  gameLogic.currentBoard = []
+  gameLogic.currentPlayer = gameLogic.playerX
+  gameLogic.over = false
+  console.log('this is the onNewGame array ', gameLogic.currentBoard)
 }
 
 const onClickCell = function (event) {
@@ -55,9 +59,11 @@ const onClickCell = function (event) {
   const cellIndex = event.data.cellIndex
   const cellClass = event.data.cellClass
   // const data = getFormFields(event.target)
-  console.log('this is the new array', gameLogic.currentBoard)
-  gameLogic.playerMove(cellIndex)
-  gameApi.updateGameCell(cellIndex, gameLogic.currentBoard[cellIndex], gameLogic.winChecker(gameLogic.currentBoard))
+  gameLogic.playerMove(cellIndex, gameLogic.currentBoard)
+  // maybe I need to update the board explicitly here?
+  // gameLogic.updateCurrentBoard()
+  console.log('this is the array during onClickCell', gameLogic.currentBoard, 'over is', gameLogic.over)
+  gameApi.updateGameCell(cellIndex, gameLogic.currentBoard[cellIndex])
   gameUi.cellClickSuccess(event.data, cellIndex, cellClass)
 }
 

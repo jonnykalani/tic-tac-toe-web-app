@@ -59,8 +59,8 @@ const newGame = function (data) {
   })
 }
 
-const updateGameCell = function (index, player, over) {
-  console.log('api update cell', index, player, over, store.game.id, store.user)
+const updateGameCell = function (index, player) {
+  console.log('api update cell', index, player, store.game.id, store.user)
   // debugger
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
@@ -74,16 +74,16 @@ const updateGameCell = function (index, player, over) {
         'cell': {
           'index': index,
           'value': player
-        },
-        'over': over
+        }
       }
     }
   })
 }
 
-const updateGameOver = function () {
+const updateGameOver = function (over) {
+  console.log('api update cell', over, store.game.id)
   return $.ajax({
-    url: 'http://tic-tac-toe.wdibos.com/games/' + store.game.id,
+    url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
     headers: {
       contentType: 'application/json',
@@ -91,7 +91,7 @@ const updateGameOver = function () {
     },
     data: {
       game: {
-        over: true
+        over: over
       }
     }
   })
