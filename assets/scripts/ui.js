@@ -3,8 +3,8 @@
 const store = require('./store')
 const gameLogic = require('./game-logic.js')
 
-const onSignUpSuccess = function () {
-  console.log('signed up')
+const onSignUpSuccess = function (data) {
+  console.log('signed up, data is ', data)
   $('#sign-up-message').text('Signed up!')
   $('#sign-up').text('Signed up!')
 }
