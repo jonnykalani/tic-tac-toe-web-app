@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+
+      <!-- Button trigger modal -->
+      <button id="modal-button" type="button" class="btn col-xs-4 begin-button btn-primary" data-toggle="modal" data-target="#sign-in-box">
+        Begin!
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="sign-in-box" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <p id="sign-in-message"></p>
+              <form id="sign-in">
+                <fieldset>
+                  <h3>Sign Innnnn FREN!!!!!</h3>
+                    <input type="text" name="credentials[email]" placeholder="your email">
+                    <input type="password" name="credentials[password]" placeholder="password">
+                    <input class="buttons btn" type="submit" value="Sign in!">
+                </fieldset>
+              </form>
+              <form id="sign-up">
+                <fieldset>
+                  <h3>Create a new frrriggin account</h3>
+                    <input type="text" name="credentials[email]" placeholder="your email">
+                    <input type="password" name="credentials[password]" placeholder="password">
+                    <input type="password" name="credentials[password]" placeholder="confirm password">
+                    <input class="buttons btn" type="submit" value="Create Account!">
+                </fieldset>
+                <h3 id="sign-up-message">
+                </h3>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  <h2 id="top-message">
+  </h2>
+  <div>
+    <h1 class="tic-tac-toe">TIC TAC TOE</h1>
+
+    <div>
+      <button type="button" id="new-game-button" class="new-game-button btn btn-primary">
+        New Game
+      </button>
+    <p id="new-game-message"></p>
+  </div>
+  <div class="game-board">
+    <div class="row">
+      <div class="col-xs-4 box cell-zero"></div>
+      <div class="col-xs-4 box cell-one"></div>
+      <div class="col-xs-4 box cell-two"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 box cell-three"></div>
+      <div class="col-xs-4 box cell-four"></div>
+      <div class="col-xs-4 box cell-five"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 box cell-six"></div>
+      <div class="col-xs-4 box cell-seven"></div>
+      <div class="col-xs-4 box cell-eight"></div>
+    </div>
+  </div>
+</div>
+  <div class="get-games-box">
+    <button type="button" class="btn get-games-button btn-primary">
+      Get Games
+    </button>
+  <p class="get-games-message"></p>
+  </div>
+      <button type="button" class="btn change-password-button btn-primary" data-toggle="modal" data-target="#change-password-modal">
+        Change Password
+      </button>
+
+      <!-- Modal -->
+      <div class="modal change-button fade" id="change-password-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <form class="change-password" id="change-password">
+                <fieldset>
+                  <legend>change password</legend>
+                    <input type="password" name="passwords[old]" placeholder="old password">
+                    <input type="password" name="passwords[new]" placeholder="new password">
+                    <input class="buttons" type="submit" value="Change Password">
+                </fieldset>
+                <p id="change-message">change message</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <h3 id="bottom-message">
+    </h3>
+    <div class="sign-out-button sign-out">
+      <form class="sign-out-form" id="sign-out" class="border">
+        <fieldset>
+          <input class="buttons" type="submit" value="Sign Out">
+          <p id="sign-out-message"></p>
+        </fieldset>
+      </form>
+    </div>
+    </body>
+</html>
